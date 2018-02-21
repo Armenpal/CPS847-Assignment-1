@@ -1,0 +1,30 @@
+language: python
+
+#which versions of python to test against
+python:
+  - "2.7"
+  - "3.3"
+
+# command to install dependencies
+install:
+  - pip install codecov
+  - pip install coverage
+#  - pip install ./lecture7/
+#  - pip install -r ./lecture7/requirements.txt
+
+script: 
+  - python -m unittest discover -v ./ci_play/ # command to run unit test
+  - coverage run ./ci_play/test.py # command to run code coverage
+
+#can do additional things, say send out reports, which we will discuss next time
+after_success:
+ - codecov --token=9bfd390b-4801-4719-9501-b6750a7f2df1 # upload coverage report to codecov.io
+
+deploy:
+  provider: s3
+  access_key_id: AKIAJOH5A5HHPNXIG7WQ
+  secret_access_key:
+    secure: xmKDPctaI8/DyeGq8BxLFBod98RM2Uw4Y7StomjEzPQBW+Q8STbmtYvHaDvXPv0Mvjb2HnfCS//QcFYl8SeS2sIf23nUhcxtAzFfUaYEUIHWaJITwOJ2Mdn2hqI/zlV9JgSlnnPB8Q5m0/JeRtoMmq1DhT1w8QjWTGhlSZfqhTKMwZp3JFA2Q2obW2tP1mql7eZq+GTG0P+Gow6gxOhtm5IW7y6VTVr2l5sbcuX/vYVkqBV9D6Z5sXo9FF1jnGitYohqHH1Rh02qudCCNpZjj3LC/1iGmwgWIUhylQ6Vt5p9uTFhyoytCZiuSG1vKR4IT9527fl1Vd3+eC4JMZEPxL8eKsvIR4PHki6RWwLHTKcnA3CcGIK8Z8Y7xECS4dvIIAVCFgEsg4SlKTZAu4LErR7Gvvi6k0okew9gcENWw0ublh1RQkF12xvkS2CCIi8kzyaBbS9FuzIr8SHjM1NVdgMmemZbIp+IkgO/Deaa9HEAXqjlvfiUqtGY+4uYXeCaba9/bvPnJFxk5oITfPE1JTQM5YU9AeI/lIUXnWfkFgMNKTEdmpQRm89O1Z8C42O9ZMJ3r8YxkUVt5DWzpAgIHxIUu/rebnL3vDdupbUQ58zSa9Xs2juoeTPkxSm/W5Kzgj+R0lPlAKszNGpOLRyM743UXG9VNErpg28lc6pAzNE=
+  bucket: avm-example.com
+  local-dir: s3_play/sample_html
+  region: us-west-2
