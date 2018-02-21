@@ -9,8 +9,7 @@ python:
 install:
   - pip install codecov
   - pip install coverage
-#  - pip install ./lecture7/
-#  - pip install -r ./lecture7/requirements.txt
+
 
 script: 
   - python -m unittest discover -v ./ci_play/ # command to run unit test
@@ -18,7 +17,7 @@ script:
 
 #can do additional things, say send out reports, which we will discuss next time
 after_success:
- - codecov --token=9bfd390b-4801-4719-9501-b6750a7f2df1 # upload coverage report to codecov.io
+ - codecov --token=0f2a6cef-9cdf-4223-8f8f-2f8f108d0c17 # upload coverage report to codecov.io
 
 deploy:
   provider: s3
