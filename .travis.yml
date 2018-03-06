@@ -11,12 +11,7 @@ install:
   - pip install coverage
 
 
-script: 
-  - python -m unittest discover -v ./ci_play/ # command to run unit test
 
-#can do additional things, say send out reports, which we will discuss next time
-after_success:
- - codecov --token=0f2a6cef-9cdf-4223-8f8f-2f8f108d0c17 # upload coverage report to codecov.io
 
 deploy:
   provider: s3
