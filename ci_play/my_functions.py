@@ -1,5 +1,4 @@
-def increment_by_one(x):
+def cps6282(x):
     return x*4
 
-def increment_by_two(x):
-    return x+2
+
