@@ -8,8 +8,9 @@ class TestMyFunc(unittest.TestCase):
         pass
  
     def test_increment_one_1(self): 
-        self.is_equal( my_functions.increment_by_one(4), 16)
+        self.assertEqual( my_functions.increment_by_one(4), 16)
   
 
 if __name__ == '__main__':
     unittest.main()
+
