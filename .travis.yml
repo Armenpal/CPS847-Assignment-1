@@ -5,6 +5,19 @@ python:
   - "2.7"
   - "3.3"
 
+# command to install dependencies
+install:
+  - pip install codecov
+  - pip install coverage
+
+
+script: 
+  - python -m unittest discover -v ./ci_play/ # command to run unit test
+  - coverage run ./ci_play/test.py # command to run code coverage
+
+#can do additional things, say send out reports, which we will discuss next time
+after_success:
+ - codecov --token=9bfd390b-4801-4719-9501-b6750a7f2df1 # upload coverage report to codecov.io
 
 
 
