@@ -15,16 +15,3 @@ script:
   - python -m unittest discover -v ./ci_play/ # command to run unit test
   - coverage run ./ci_play/test.py # command to run code coverage
 
-#can do additional things, say send out reports, which we will discuss next time
-after_success:
- - codecov --token=9bfd390b-4801-4719-9501-b6750a7f2df1 # upload coverage report to codecov.io
-
-
-
-
-deploy:
-  provider: s3
-  access_key_id: AKIAJATCVDL32CUPFF4Q
-  secret_access_key: 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
-  bucket: cps847-6282
-  local-dir: website
